@@ -1,0 +1,8 @@
+- “Modelo no lineal de optimización de costos para sistemas de delivery interregional en plataformas digitales”
+- “Modelo no lineal de costos en sistemas logísticos interregionales”
+- “Formulación y análisis de un modelo de programación no lineal para la optimización de costos en redes logísticas interregionales”
+
+
+titulos forma corta:
+- "Modelo de programación no lineal para la optimización de costos en redes logísticas interregionales" (14 palabras).
+- "Programación no lineal para optimización de costos en redes logísticas interregionales" (11 palabras)

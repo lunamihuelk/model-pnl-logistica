@@ -1,0 +1,24 @@
+\section{Metodología Resumida}
+
+\subsection{Breve descripción de los métodos y enfoques que se utilizarán para abordar el problema}
+La investigación se estructura bajo un paradigma cuantitativo con un diseño metodológico integral que se bifurca en dos grandes fases: una analítico-deductiva (correspondiente al rigor de la Matemática Pura) y otra numérico-experimental (orientada a la Matemática Aplicada).
+
+\textbf{Fase Analítico-Deductiva (Formulación Teórica):}
+Se empleará rigurosamente el \textbf{método lógico-deductivo}. Se partirá de los axiomas de los espacios vectoriales reales y de la teoría algebraica de grafos para estructurar el problema. Los procedimientos analíticos a utilizar incluyen:
+\begin{enumerate}
+    \item \textbf{Cálculo Diferencial Multivariable:} Para el cálculo exacto del vector Gradiente $\nabla F(X)$ y la matriz Hessiana $\nabla^2 F(X)$ de las funciones de costo logístico.
+    \item \textbf{Análisis Topológico y Convexo:} Empleo de teoremas clásicos (como el Teorema de Weierstrass) para evaluar la compacidad del espacio de soluciones $\Omega$ y demostrar formalmente la existencia del óptimo.
+    \item \textbf{Derivación de Dualidad:} Formulación analítica de las condiciones necesarias y suficientes de optimalidad de Karush-Kuhn-Tucker (KKT).
+\end{enumerate}
+
+\textbf{Fase Numérico-Experimental (Resolución Computacional):}
+En la etapa de aplicación, el método radicará en el \textbf{diseño y experimentación in-silico} algorítmica:
+\begin{enumerate}
+    \item \textbf{Implementación Numérica:} Codificación de métodos iterativos de optimización diferenciable (como el Método de Puntos Interiores o la Programación Cuadrática Secuencial - SQP) en lenguajes orientados al cálculo matricial de alto rendimiento (ej. Julia, Python/SciPy).
+    \item \textbf{Diseño de Experimentos Algorítmicos:} Ejecución de simulaciones numéricas sobre una batería de grafos (instancias de prueba) generadas paramétricamente, con el objetivo de cuantificar variables de rendimiento asintótico (número de iteraciones para satisfacer la tolerancia del error residual $\epsilon$, y costo temporal de CPU).
+\end{enumerate}
+
+\subsection{Justificación de la elección de estos métodos}
+La elección del \textbf{método deductivo} formal para la formulación teórica es indiscutible e irrenunciable dentro del ámbito académico de las Ciencias Matemáticas. Mientras que otras disciplinas toleran la validación empírica o heurística, en matemática pura la única forma de garantizar que una solución propuesta es correcta (y no es un simple óptimo local engañoso) es a través del blindaje de una demostración analítica irrefutable sobre la topología del problema.
+
+Respecto a la fase aplicada, la selección de los \textbf{métodos iterativos continuos (Puntos Interiores y SQP)} en contraposición a las tradicionales "metaheurísticas de ingeniería" (como los Algoritmos Genéticos) obedece a una necesidad de rigor. Las metaheurísticas son cajas negras estocásticas que carecen de pruebas analíticas de convergencia. En contraste, los métodos matriciales iterativos seleccionados se fundamentan teóricamente en las aproximaciones del Teorema de Taylor y el sistema de KKT, lo que permite demostrar matemáticamente su tasa de convergencia (cuadrática o superlineal) y acotar la cota del error algebraico en cada paso del algoritmo.

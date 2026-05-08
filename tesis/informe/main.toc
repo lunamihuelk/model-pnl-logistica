@@ -1,0 +1,35 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Preparación y revisión bibliográfica y definición del problema}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Búsqueda y selección de literatura relevante}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Lectura y análisis de la literatura}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Identificación de brechas y problemas de investigación}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Definición y formulación del problema de investigación en términos matemáticos}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Planteamiento de las preguntas de investigación que se buscan responder}{4}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Explicación de los problemas secundarios que se abordarán}{4}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Antecedentes del problema}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Revisión de trabajos previos relacionados con el problema}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Evolución histórica del problema y su estado actual en la literatura}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Principales teorías, métodos y resultados previos que se han obtenido}{6}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Objetivos e hipótesis de la investigación}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Declaración clara del objetivo principal de la investigación}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Desglose de objetivos específicos que se pretenden alcanzar para abordar el problema}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Hipótesis de trabajo}{7}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Justificación del Problema}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Razones por las cuales el problema es relevante e importante}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Impacto potencial de resolver el problema en el campo de la matemática teórica}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Beneficios teóricos y prácticos de abordar este problema}{8}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Alcance y Limitaciones}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Definición del alcance de la investigación}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Identificación de las limitaciones y restricciones que puedan afectar el estudio}{9}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Delimitación de lo que se va a incluir y excluir en la investigación}{9}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Metodología Resumida}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Breve descripción de los métodos y enfoques que se utilizarán para abordar el problema}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Justificación de la elección de estos métodos}{11}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Relevancia del Estudio}{11}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Impacto potencial del estudio en la teoría matemática}{11}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Contribución esperada del estudio a la resolución de problemas matemáticos más amplios}{12}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Posibles aplicaciones de los resultados en otras áreas de la matemática o en campos relacionados}{12}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Conclusiones}{12}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Resumen de la importancia del problema y de la necesidad de su estudio}{12}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Conexión entre el planteamiento del problema y los objetivos de la investigación}{13}{subsection.8.2}%
+\contentsline {section}{Referencias Bibliográficas}{14}{Item.14}%

@@ -1,0 +1,234 @@
+\documentclass[10pt]{beamer}
+
+\usetheme{Boadilla}
+\usecolortheme{whale}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows.meta, positioning, calc}
+
+\title[Modelo no lineal en logística interregional]{Formulación y análisis de un modelo de programación no lineal para la optimización de costos en redes logísticas interregionales}
+\author[Miguel Angel Luna Ttacca]{Miguel Angel Luna Ttacca}
+\institute[Seminario de Tesis I]{
+    Asignatura: Seminario de Tesis I \\
+    Docente: Dr. Rolando Wilman Vásquez Jaico \\
+    Tacna - Perú
+}
+\date{2026}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Contenido}
+    \tableofcontents
+\end{frame}
+
+\section{Introducción}
+
+\begin{frame}{¿De qué trata esta tesis?}
+    \begin{columns}[T]
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item \textbf{El Escenario:} La logística interregional mueve bienes a gran escala. La meta es minimizar los costos operativos en las rutas.
+                \item \textbf{El Problema:} Modelos clásicos asumen que el costo crece de forma \textit{lineal}. La realidad es \textbf{no lineal}: existen \textit{economías de escala} y \textit{congestión vehicular}.
+                \item \textbf{Nuestra Propuesta:} Formular un modelo de \textbf{Programación No Lineal} que capture esta realidad en un grafo, estudiando su geometría y algoritmos de solución computacional.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \centering
+            \vspace{0.5cm}
+            \begin{tikzpicture}[node distance=1.2cm, auto, scale=0.7, transform shape]
+                \node[draw, rectangle, rounded corners, fill=blue!10, text width=3.5cm, align=center] (A) {\textbf{1. Red Logística}\\(Escenario)};
+                \node[draw, rectangle, rounded corners, fill=red!10, text width=3.5cm, align=center, below=of A] (B) {\textbf{2. Costos Reales}\\(Problema No Lineal)};
+                \node[draw, rectangle, rounded corners, fill=green!20, text width=3.5cm, align=center, below=of B] (C) {\textbf{3. Optimización}\\(Propuesta PNL)};
+                
+                \draw[->, thick, >=stealth] (A) -- (B);
+                \draw[->, thick, >=stealth] (B) -- (C);
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Problema de Investigación}
+
+\begin{frame}{Preparación y Definición del Problema}
+    \begin{itemize}
+        \item \textbf{Revisión de Literatura:} 
+        \begin{itemize}
+            \item Estudiamos cómo la matemática pura (optimización continua) resuelve problemas en redes de transporte.
+        \end{itemize}
+        \item \textbf{El Problema Actual:} La literatura aplicada y la industria suelen simplificar la realidad utilizando Programación Lineal (PL), asumiendo proporcionalidad estricta en los costos.
+        \item \textbf{La Realidad (Dinámicas No Lineales):} Los costos de transporte físicos exhiben un comportamiento no lineal:
+        \begin{itemize}
+            \item \textit{Economías de escala:} Curvas cóncavas donde a mayor volumen, menor costo unitario.
+            \item \textit{Congestión vehicular:} Curvas convexas donde el costo temporal crece exponencialmente al saturar la ruta.
+        \end{itemize}
+        \alert{El problema consiste en formular axiomáticamente un modelo multivariable no lineal sobre un grafo $G=(V,E)$ y evaluar sus propiedades topológicas.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Preguntas de Investigación}
+    \textbf{Pregunta Central:}\\
+    ¿De qué manera la formulación y el análisis de un modelo de programación no lineal permite la optimización de costos en redes logísticas interregionales?
+    
+    \vspace{0.3cm}
+    \textbf{Preguntas Secundarias:}
+    \small
+    \begin{itemize}
+        \item ¿Cómo se formulan analítica y axiomáticamente las funciones multivariables y el sistema de restricciones para representar los costos operativos no lineales en un grafo dirigido $G=(V,E)$?
+        \item ¿Qué propiedades geométricas y topológicas, y bajo qué condiciones de optimalidad (KKT), rigen la región factible del modelo propuesto para garantizar la identificación de óptimos locales o globales?
+        \item ¿Cuál es la tasa de convergencia asintótica y el grado de complejidad computacional de los métodos numéricos de optimización continua aplicados a la resolución del modelo?
+    \end{itemize}
+\end{frame}
+
+\section{Antecedentes}
+
+\begin{frame}{Antecedentes del problema}
+    \begin{itemize}
+        \item \textbf{Historia:} Se evolucionó de los modelos de Kantorovich a enfoques combinatorios como la Programación Lineal Entera Mixta (PLEM).
+        \item \textbf{Estado Actual:} El paradigma en matemática de frontera requiere modelar flujos continuos mediante \textbf{Programación No Lineal (PNL)}.
+        \item \textbf{Brecha Metodológica:} En ingeniería se usan mucho las metaheurísticas (cajas negras), pero carecen del rigor analítico para demostrar convergencia hacia un óptimo global, justificando el uso de métodos iterativos fundamentados en derivadas de clase $C^2$.
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \begin{center}
+    \begin{tikzpicture}[node distance=2cm, auto, scale=0.7, transform shape]
+        \node[draw, rectangle, rounded corners, fill=blue!10, text width=3.5cm, align=center] (A) {Programación Lineal\\(Simple pero pierde precisión)};
+        \node[draw, rectangle, rounded corners, fill=red!10, text width=3.5cm, align=center, right=of A] (B) {Metaheurísticas\\(Rápidas pero sin garantías matemáticas)};
+        \node[draw, rectangle, rounded corners, fill=green!20, text width=4.5cm, align=center, below=0.8cm of $(A)!0.5!(B)$] (C) {\textbf{Optimización Continua}\\(Rigor matemático y modelado exacto de curvas)};
+        
+        \draw[->, thick, >=stealth] (A) -- (C);
+        \draw[->, thick, >=stealth] (B) -- (C);
+    \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\section{Objetivos e Hipótesis}
+
+\begin{frame}{Objetivos de la investigación}
+    \textbf{Objetivo Principal:}\\
+    Formular y analizar un modelo de programación no lineal para la optimización de costos en redes logísticas interregionales.
+    
+    \vspace{0.3cm}
+    \textbf{Objetivos Secundarios:}
+    \small
+    \begin{enumerate}
+        \item \textbf{Construcción Axiomática del Modelo:} Definir analíticamente las funciones multivariables continuas y el sistema de restricciones que representen las no linealidades de los costos operativos (economías de escala y congestión) proyectadas sobre un grafo dirigido $G=(V,E)$, respetando la conservación de flujo.
+        \item \textbf{Análisis Geométrico y Topológico:} Demostrar teóricamente las propiedades de compacidad y convexidad de la región factible, derivando y analizando las condiciones KKT para la identificación de óptimos locales frente a globales.
+        \item \textbf{Análisis Numérico y Computacional:} Implementar métodos numéricos de optimización continua de orden superior, evaluando y demostrando matemáticamente su tasa de convergencia asintótica y grado de complejidad computacional.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Hipótesis de la investigación}
+    \begin{block}{Hipótesis Principal}
+    Al utilizar funciones de clase $C^2$ no estrictamente convexas, el espacio topológico permitirá que algoritmos matriciales iterativos converjan hacia el óptimo con un menor error analítico que los modelos lineales (PLEM), bajo un costo computacional polinomial estable.
+    \end{block}
+\end{frame}
+
+\section{Justificación}
+
+\begin{frame}{Justificación del Problema}
+    \begin{itemize}
+        \item \textbf{Aporte a la Matemática Pura:} Aporta al Análisis Convexo al estudiar flujos regidos por funciones no lineales, desafiando la asunción de unicidad de soluciones y aportando al estudio de los multiplicadores de Lagrange (precios sombra).
+        \item \textbf{Beneficio Computacional:} Provee demostraciones formales que justifican algebraicamente el uso de gradientes y matrices Hessianas dispersas en topologías de red.
+        \item \textbf{Beneficio Práctico:} Permite desarrollar algoritmos exactos que reduzcan la congestión logística genuinamente, optimizando el consumo de combustible.
+    \end{itemize}
+\end{frame}
+
+\section{Alcance y Limitaciones}
+
+\begin{frame}{Alcance y Limitaciones}
+    \begin{block}{Alcance de la investigación}
+        Alcance teórico-computacional en Optimización Continua: formulación, demostración geométrica (KKT) y evaluación asintótica in-silico.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Limitaciones Intrínsecas:}
+        \begin{itemize}
+            \item \textit{Explosión Computacional:} La no convexidad eleva el costo por iteración, acotando el tamaño del grafo a evaluar.
+            \item \textit{Datos Reales:} Dificultad para obtener coeficientes paramétricos reales de la industria.
+        \end{itemize}
+        \item \textbf{Exclusiones (Lo que NO abordaremos):}
+        \begin{itemize}
+            \item Programación Estocástica (incertidumbre).
+            \item Variables Discretas (no abriremos o cerraremos rutas, es un modelo continuo).
+            \item Micro-ruteo (VRP - el alcance es sobre macro-rutas, no reparto urbano).
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Metodología}
+
+\begin{frame}{Metodología Resumida}
+    Se estructuran dos grandes fases:
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{1. Fase Analítico-Deductiva}
+            \begin{itemize}
+                \item Cálculo Diferencial para obtener gradientes y matriz Hessiana.
+                \item \textbf{Teorema de Weierstrass:} Para garantizar la compacidad del espacio $\Omega$ y la existencia del óptimo.
+                \item \textbf{Condiciones KKT:} Para caracterizar analíticamente los óptimos locales vs globales.
+            \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{2. Fase Numérico-Experimental}
+            \begin{itemize}
+                \item Implementación de métodos iterativos basados en el Teorema de Taylor (Puntos Interiores o SQP).
+                \item Codificación en Python/Julia.
+                \item Cuantificación de la tasa de convergencia asintótica del algoritmo.
+            \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Relevancia}
+
+\begin{frame}{Relevancia y Aplicación en otras ramas}
+    \begin{itemize}
+        \item \textbf{Extrapolación del Modelo:} Dado que el modelo se construye de forma axiomática y topológica sobre un grafo abstracto, sus ecuaciones son isomórficas y aplicables a otras áreas de frontera.
+        \vspace{0.3cm}
+        \item \textbf{Otras aplicaciones matemáticas y de ingeniería:}
+        \begin{itemize}
+            \item \textit{Redes de Telecomunicaciones:} El ruteo de paquetes donde la congestión genera un retardo no lineal de los datos.
+            \item \textit{Mecánica de Fluidos:} Caudales óptimos en gasoductos interregionales (inecuaciones por fricción).
+            \item \textit{Machine Learning:} Las demostraciones algorítmicas de descenso por gradiente en estructuras de red sirven de soporte a las \textbf{Redes Neuronales de Grafos (GNN)}.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Conclusiones}
+
+\begin{frame}{Conclusiones}
+    \begin{itemize}
+        \item \textbf{Conexión entre el Problema y la Solución:} Trascender las simplificaciones lineales es una necesidad crítica. Ignorar las no linealidades genera desconexión entre la teoría abstracta y la realidad de los costos.
+        \item \textbf{Cumplimiento de Objetivos:} 
+        \begin{enumerate}
+            \item El modelo geométrico capta la complejidad física.
+            \item El análisis topológico y de KKT brinda el rigor deductivo exigido por las ciencias puras.
+            \item La implementación algorítmica cierra el ciclo probando su convergencia y resolubilidad práctica.
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Referencias Bibliográficas}
+    \footnotesize
+    \textbf{Bases Matemáticas de Optimización:}
+    \begin{itemize}
+        \item Bazaraa, M. S., et al. (2006). \textit{Nonlinear Programming: Theory and Algorithms}.
+        \item Nocedal, J., \& Wright, S. J. (2006). \textit{Numerical Optimization}.
+    \end{itemize}
+    \textbf{Manejo de Redes y Transporte:}
+    \begin{itemize}
+        \item Ahuja, R. K., et al. (1993). \textit{Network Flows: Theory, Algorithms, and Applications}.
+        \item Ravindran, A. R., \& Warsing, D. P. (2012). \textit{Supply Chain Engineering}.
+    \end{itemize}
+\end{frame}
+
+\end{document}

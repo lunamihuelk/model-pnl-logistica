@@ -1,0 +1,22 @@
+\section{Justificación del Problema}
+
+\subsection{Razones por las cuales el problema es relevante e importante}
+En el contexto moderno del flujo masivo de mercancías, las redes logísticas interregionales han adquirido complejidades dinámicas sin precedentes. A pesar de esto, gran parte de las metodologías empleadas para su diseño se basan en simplificaciones lineales que asumen costos de transporte y almacenamiento directamente proporcionales. Esta linealización sistemática omite fenómenos inherentes a la realidad física, tales como el encarecimiento exponencial por la congestión vehicular en ciertas rutas (comportamiento convexo) y la reducción marginal de costos por volumen gracias a las economías de escala (comportamiento cóncavo). Abordar este problema mediante Programación No Lineal es crucialmente relevante porque cierra la brecha empírica entre el modelo abstracto y el comportamiento real del sistema, evitando óptimos "artificiales" generados por la excesiva simplificación del problema original.
+
+\subsection{Impacto potencial de resolver el problema en el campo de la matemática teórica}
+Desde la perspectiva de la matemática pura, y en particular dentro de la Optimización Continua y el Análisis Convexo, el estudio de flujos en redes gobernados por funciones no lineales aporta a la comprensión de la topología en espacios vectoriales restringidos. Al introducir curvas de costo no estrictamente convexas sobre un grafo, se desafían las asunciones clásicas de unicidad. Resolver matemáticamente este problema demanda demostrar formalmente bajo qué condiciones geométricas la región factible permite el cumplimiento robusto de las condiciones de Karush-Kuhn-Tucker (KKT). Asimismo, el análisis del problema dual asociado aportará conocimiento teórico sobre el comportamiento y la estabilidad de los multiplicadores de Lagrange (precios sombra) ante perturbaciones paramétricas en sistemas no lineales de gran escala.
+
+\subsection{Beneficios teóricos y prácticos de abordar este problema}
+La estructuración de este modelo genera aportes duales que se alinean perfectamente con la rama de la Matemática Pura y Aplicada:
+
+\textbf{Beneficios Teóricos:}
+\begin{itemize}
+    \item \textbf{Sustento Analítico:} Provee un marco de demostraciones formales que justifican algebraicamente el uso de algoritmos de optimización basada en gradientes sobre grafos, contrastando con el uso empírico de metaheurísticas de "caja negra" comunes en ingeniería.
+    \item \textbf{Cotas Computacionales:} Aporta al estudio del análisis numérico al evaluar y demostrar la tasa de convergencia asintótica y el comportamiento del error matemático de métodos como Puntos Interiores o Cuasi-Newton frente a matrices Jacobianas y Hessianas dispersas (típicas de las topologías de red).
+\end{itemize}
+
+\textbf{Beneficios Prácticos:}
+\begin{itemize}
+    \item \textbf{Resolución Computacional Aplicada:} Deriva en el desarrollo de un algoritmo numérico programable que podría ser implementado por tomadores de decisión para calcular ruteos y distribuciones volumétricas que minimicen genuinamente el costo económico absoluto.
+    \item \textbf{Eficiencia Sistémica:} Al optimizar los flujos considerando restricciones no lineales (como la capacidad real elástica de las rutas), se reduce el riesgo de congestiones logísticas, lo que disminuye el consumo de combustible y, colateralmente, la huella de carbono de las flotas interregionales.
+\end{itemize}

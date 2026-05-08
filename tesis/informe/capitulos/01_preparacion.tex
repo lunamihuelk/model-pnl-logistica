@@ -1,0 +1,51 @@
+\section{Preparación y revisión bibliográfica y definición del problema}
+
+\subsection{Búsqueda y selección de literatura relevante}
+Para la construcción del marco teórico y el estado del arte de la presente investigación, se realizó una búsqueda exhaustiva dividida en dos ejes fundamentales. El primer eje corresponde a los fundamentos matemáticos de la optimización, para lo cual se seleccionaron textos clásicos de rigor axiomático, tales como \textit{Nonlinear Programming: Theory and Algorithms} (Bazaraa, Sherali \& Shetty, 2006), \textit{Numerical Optimization} (Nocedal \& Wright, 2006) y \textit{Convex Optimization} (Boyd \& Vandenberghe, 2004). El segundo eje se centró en la aplicación de modelos a redes de transporte, recurriendo a bases de datos académicas (Redalyc, Dialnet, SciELO y repositorios universitarios), seleccionando artículos que abordan la optimización de procesos de transporte de carga terrestre e integración de producción en redes logísticas.
+
+\subsection{Lectura y análisis de la literatura}
+El análisis de la literatura revela que el estudio de redes logísticas se apoya históricamente en la teoría de flujos en redes (Ahuja, Magnanti \& Orlin, 1993). En el ámbito aplicado, estudios recientes demuestran el esfuerzo continuo por modelar el transporte primario y la integración de inventarios (como los casos estudiados en el sector alimentos en Colombia y modelos de integración plantas-distribuidores). Sin embargo, desde la perspectiva matemática pura, gran parte de esta literatura aplicada recurre a la Programación Lineal (PL) o a la Programación Lineal Entera Mixta (PLEM) asumiendo proporcionalidad estricta en los costos, o bien, emplean algoritmos heurísticos que no garantizan la convergencia hacia un óptimo global y cuyo análisis de complejidad suele ser omitido.
+
+\subsection{Identificación de brechas y problemas de investigación}
+Se ha identificado una brecha teórica significativa: mientras que la ingeniería logística busca soluciones rápidas asumiendo linealidad, la realidad física del transporte interregional involucra dinámicas intrínsecamente no lineales (ej. economías de escala decrecientes, costos exponenciales por congestión de rutas y tarifas de almacenamiento por tramos). La literatura aplicada revisada carece, en su mayoría, de un análisis riguroso sobre la topología del espacio de soluciones cuando se introducen estas restricciones no lineales. Falta un puente formal que no solo plantee la ecuación empírica, sino que demuestre axiomáticamente la existencia de soluciones, analice la convexidad del modelo y justifique numéricamente el algoritmo resolutivo empleado.
+
+\subsection{Definición y formulación del problema de investigación en términos matemáticos}
+Sea un grafo dirigido $G = (V, E)$, donde $V$ es el conjunto de nodos (centros de producción, transbordo y demanda) y $E$ es el conjunto de arcos (rutas interregionales). Sea $x_{ij} \in \mathbb{R}^{+}$ la variable de decisión continua que representa el flujo de carga a través del arco $(i,j) \in E$. 
+
+El problema consiste en minimizar una función objetivo multivariable no lineal $F(X)$:
+\begin{equation}
+    \min_{X \in \Omega} F(X) = \sum_{(i,j) \in E} f_{ij}(x_{ij}) + \sum_{i \in V} h_i(y_i)
+\end{equation}
+donde $f_{ij}$ es una función de costo de transporte estrictamente no lineal (posiblemente no convexa debido a economías de escala), $h_i$ representa el costo de almacenamiento no lineal en el nodo $i$, y $y_i$ es el inventario en dicho nodo.
+
+El problema está sujeto a la región factible $\Omega \subset \mathbb{R}^{|E|}$, definida por el sistema de restricciones:
+\begin{equation}
+    \sum_{j: (i,j) \in E} x_{ij} - \sum_{j: (j,i) \in E} x_{ji} = d_i, \quad \forall i \in V \quad \text{(Conservación de flujo)}
+\end{equation}
+\begin{equation}
+    0 \leq x_{ij} \leq u_{ij}, \quad \forall (i,j) \in E \quad \text{(Capacidad de rutas)}
+\end{equation}
+\begin{equation}
+    g_k(X) \leq 0, \quad \forall k \in K \quad \text{(Restricciones interregionales complejas)}
+\end{equation}
+
+El desafío matemático radica en que, dado que $F(X)$ y $g_k(X)$ no son lineales, la región $\Omega$ puede perder sus propiedades de poliedro convexo, lo que dificulta establecer las condiciones necesarias y suficientes de optimalidad global mediante los teoremas clásicos.
+
+\subsection{Planteamiento de las preguntas de investigación que se buscan responder}
+\textbf{Pregunta principal:}
+¿De qué manera la formulación y el análisis de un modelo de programación no lineal permite la optimización de costos en redes logísticas interregionales?
+
+\textbf{Preguntas secundarias:}
+\begin{itemize}
+    \item ¿Cómo se formulan analítica y axiomáticamente las funciones multivariables y el sistema de restricciones para representar los costos operativos no lineales en un grafo dirigido $G=(V,E)$?
+    \item ¿Qué propiedades geométricas y topológicas, y bajo qué condiciones de optimalidad (KKT), rigen la región factible del modelo propuesto para garantizar la identificación de óptimos locales o globales?
+    \item ¿Cuál es la tasa de convergencia asintótica y el grado de complejidad computacional de los métodos numéricos de optimización continua aplicados a la resolución de este modelo matemático?
+\end{itemize}
+
+\subsection{Explicación de los problemas secundarios que se abordarán}
+Para dar respuesta a las preguntas planteadas, la investigación abordará teóricamente los siguientes problemas secundarios, derivados directamente de las preguntas secundarias:
+\begin{enumerate}
+    \item \textbf{Problema de Formulación Analítica y Axiomática:} Se abordará la dificultad de representar matemáticamente las no linealidades de los costos operativos (como economías de escala y congestión) mediante funciones multivariables continuas y sistemas de restricciones en un grafo dirigido $G=(V,E)$, garantizando el cumplimiento de los principios de conservación de flujo.
+    \item \textbf{Problema de Análisis Geométrico, Topológico y Optimalidad:} Se enfrentará el desafío de determinar las propiedades de compacidad y convexidad de la región factible, así como derivar y analizar las condiciones de Karush-Kuhn-Tucker (KKT) necesarias para distinguir y garantizar la existencia de óptimos locales o globales en el modelo.
+    \item \textbf{Problema de Resolución Numérica y Complejidad Computacional:} Se tratará el reto de seleccionar, aplicar y evaluar métodos numéricos de optimización continua, determinando analíticamente su tasa de convergencia asintótica y el grado de complejidad computacional requerido para resolver el modelo de manera eficiente.
+\end{enumerate}

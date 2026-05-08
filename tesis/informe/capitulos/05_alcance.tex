@@ -1,0 +1,28 @@
+\section{Alcance y Limitaciones}
+
+\subsection{Definición del alcance de la investigación}
+La presente investigación tiene un alcance teórico-computacional enmarcado estrictamente en el dominio de la Optimización Continua y la Matemática Aplicada. A nivel teórico, el trabajo comprenderá la formulación algebraica del modelo matemático no lineal sobre redes, la demostración rigurosa de sus propiedades geométricas (convexidad del espacio funcional), y la estructuración de las condiciones analíticas de optimalidad de Karush-Kuhn-Tucker. A nivel aplicativo, el estudio abarcará la selección, codificación y evaluación asintótica de un algoritmo numérico de descenso iterativo, culminando en la simulación computacional de diversas instancias abstractas del problema logístico para medir experimentalmente la tasa de convergencia del método matemático propuesto.
+
+\subsection{Identificación de las limitaciones y restricciones que puedan afectar el estudio}
+La consecución rigurosa de los objetivos de la tesis podría verse condicionada por las siguientes limitaciones intrínsecas:
+\begin{itemize}
+    \item \textbf{Explosión Computacional (Complejidad):} Dado que la pérdida de la estricta convexidad en problemas multivariables eleva drásticamente el costo computacional por iteración, la validación asintótica del algoritmo estará limitada en escala. La cardinalidad de los conjuntos del grafo (nodos y arcos) que se puedan someter a simulación dependerá de las capacidades de la memoria RAM y el hardware de cómputo disponible.
+    \item \textbf{Acceso a Parámetros Industriales Reales:} Extraer coeficientes reales para parametrizar las ecuaciones continuas $C^2$ (por ejemplo, el parámetro de decaimiento marginal en una economía de escala real) es complejo debido a acuerdos de confidencialidad en el sector transporte. Por ello, la validación del modelo podría requerir la generación algorítmica de instancias de prueba o la adaptación de \textit{benchmarks} académicos estandarizados provenientes de la literatura internacional.
+\end{itemize}
+
+\subsection{Delimitación de lo que se va a incluir y excluir en la investigación}
+Para garantizar la viabilidad del estudio, resguardar el rigor de las demostraciones matemáticas y delimitar el área de experticia evaluada, se establecen las siguientes condiciones de frontera:
+
+\textbf{El modelo INCLUIRÁ:}
+\begin{itemize}
+    \item Variables de decisión pertenecientes estrictamente al campo de los números reales no negativos ($\mathbb{R}^+$), enfocándose en modelos de variable continua.
+    \item Funciones objetivo y de restricción algebraicas que cumplan con ser de clase $C^2$ (diferenciables hasta su segunda derivada) para permitir el cálculo formal del vector Gradiente y la matriz Hessiana.
+    \item Un enfoque estático-determinista de red macroscópica (el volumen de la demanda en el nodo de destino es un escalar conocido a priori, y el arco representa una vía interregional).
+\end{itemize}
+
+\textbf{El modelo EXCLUIRÁ expresamente:}
+\begin{itemize}
+    \item \textbf{Incertidumbre Matemática (Programación Estocástica):} No se incorporarán variables aleatorias o funciones de densidad de probabilidad para modelar la fluctuación de la demanda en el tiempo. Todas las matrices de datos se asumirán invariables y deterministas.
+    \item \textbf{Variables Discretas / Combinatoria (MINLP):} Se excluirá el modelado con variables enteras o binarias booleanas (ej. abrir o cerrar un centro). En caso de plantearse restricciones binarias por necesidad topológica, estas se abordarán mediante su respectiva \textit{relajación continua}.
+    \item \textbf{Micro-ruteo Vehicular (VRP):} El modelo no abordará problemas como el del agente viajero (TSP) o el ruteo interno de camiones a nivel de calles urbanas, ya que el alcance topológico se ciñe exclusivamente a los grandes flujos entre nodos macro-regionales.
+\end{itemize}

@@ -1,0 +1,21 @@
+\section{Objetivos e hipótesis de la investigación}
+
+\subsection{Declaración clara del objetivo principal de la investigación}
+Formular y analizar rigurosamente un modelo matemático fundamentado en la Programación No Lineal para la minimización de costos en redes logísticas interregionales, estableciendo sus propiedades topológicas subyacentes y evaluando teóricamente la convergencia computacional de algoritmos de optimización diferenciable aplicados a dicho modelo.
+
+\subsection{Desglose de objetivos específicos que se pretenden alcanzar para abordar el problema}
+Para garantizar el cumplimiento del objetivo principal y asegurar el peso matemático de la investigación, se establecen los siguientes objetivos específicos:
+
+\begin{enumerate}
+    \item \textbf{Construcción Axiomática del Modelo:} Definir analíticamente las funciones multivariables continuas (función objetivo y sistema de restricciones) que representen las no linealidades de los costos operativos (economías de escala y congestión) proyectadas sobre un grafo dirigido $G = (V, E)$, respetando estrictamente los principios de conservación de flujo matricial.
+    
+    \item \textbf{Análisis Geométrico y Topológico:} Demostrar teóricamente las propiedades de compacidad y convexidad (o falta de ella) de la región factible generada, procediendo a derivar y analizar las condiciones necesarias y suficientes de optimalidad de Karush-Kuhn-Tucker (KKT) para la identificación de óptimos locales frente a óptimos globales.
+    
+    \item \textbf{Análisis Numérico y Computacional:} Implementar computacionalmente métodos numéricos de optimización continua de orden superior (como el Método de Puntos Interiores o algoritmos Cuasi-Newton) para la resolución del modelo, evaluando y demostrando matemáticamente su tasa de convergencia asintótica y su grado de complejidad computacional.
+\end{enumerate}
+
+\subsection{Hipótesis de trabajo}
+Al tratarse de una investigación de corte teórico-práctico en el campo de la matemática aplicada, se postula la siguiente hipótesis fundamental que guía el desarrollo del análisis:
+
+\textbf{Hipótesis Principal:}
+La formulación de una red logística interregional utilizando funciones de costo de clase $C^2$ (dos veces diferenciables continuas) y no estrictamente convexas, configura un espacio topológico de soluciones donde la aplicación de algoritmos de optimización basados en el gradiente conjugado o Puntos Interiores logra converger hacia óptimos estacionarios con un menor error de aproximación analítica en comparación a los modelos de Programación Lineal Entera Mixta (PLEM), asumiendo un incremento en la complejidad temporal acotado por un límite polinomial estable.

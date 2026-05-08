@@ -1,0 +1,23 @@
+\section{Antecedentes del problema}
+
+\subsection{Revisión de trabajos previos relacionados con el problema}
+El estudio de la optimización en redes logísticas ha sido un foco recurrente tanto en la investigación de operaciones como en la matemática aplicada. En el ámbito regional latinoamericano, investigaciones recientes han modelado redes de transporte primario; por ejemplo, estudios enfocados en el sector de alimentos en Colombia han analizado cómo la estructuración de un modelo matemático estático minimiza los costos operativos. Asimismo, existen antecedentes que proponen modelos matemáticos de integración de producción e inventarios (conectando plantas, distribuidores y detallistas), los cuales abordan la red como un sistema multi-escalón (\textit{multi-echelon}) con restricciones acopladas de almacenamiento.
+
+En la literatura referente al diseño de redes logísticas inversas y la optimización de procesos de transporte de carga terrestre, la constante metodológica ha sido la formulación de problemas de Programación Lineal (PL) o Programación Lineal Entera Mixta (PLEM). Estos trabajos asumen, por conveniencia de la resolución computacional, que las funciones de costo crecen de forma estrictamente lineal o escalonada. Aunque estos estudios arrojan resultados prácticos útiles, desde una perspectiva matemática rigurosa, incurren en una pérdida significativa de precisión al ignorar el comportamiento inherentemente no lineal de dinámicas reales, como la congestión geométrica de rutas vehiculares y las curvas cóncavas de las economías de escala.
+
+\subsection{Evolución histórica del problema y su estado actual en la literatura}
+Históricamente, el modelamiento algebraico de redes de transporte tiene sus raíces formales en el problema clásico de transporte de Kantorovich y Hitchcock (década de 1940). En las décadas de 1960 y 1970, la maduración de la teoría algorítmica de grafos permitió el desarrollo de modelos de flujo de costo mínimo con bases matemáticas sólidas. 
+
+Durante los años 1990 y principios de los 2000, impulsados por el aumento del poder computacional, los investigadores transicionaron masivamente hacia modelos discretos y combinatorios (PLEM) para representar variables binarias topológicas (como la apertura de arcos). Sin embargo, el \textbf{estado actual de la literatura} en matemática de frontera reconoce que las macrorredes modernas se comportan como flujos fluidodinámicos continuos. Por tanto, el paradigma investigativo reciente está rotando hacia la \textbf{Programación No Lineal Continua}, que permite incorporar funciones diferenciables no convexas para representar variaciones tarifarias marginales, abriendo nuevos problemas teóricos respecto a la existencia de múltiples óptimos locales.
+
+\subsection{Principales teorías, métodos y resultados previos que se han obtenido}
+Los modelos desarrollados hasta la fecha se fundamentan en un andamiaje teórico que combina la Teoría Algebraica de Grafos (mediante el uso de matrices de incidencia nodo-arco para las restricciones topológicas) y el Análisis Convexo (para la caracterización de la región factible).
+
+En cuanto a los \textbf{métodos resolutivos} empleados en los antecedentes, se observan tres tendencias claras:
+\begin{itemize}
+    \item \textbf{Métodos Lineales Exactos:} Utilización de Descomposición de Benders y métodos Branch-and-Bound, los cuales padecen de explosión combinatoria (complejidad NP-Hard) ante el aumento de la densidad del grafo.
+    \item \textbf{Metaheurísticas de Caja Negra:} Implementadas ampliamente en artículos orientados a la ingeniería pura. Si bien obtienen tiempos computacionales bajos, carecen de demostraciones formales de convergencia topológica hacia un óptimo global.
+    \item \textbf{Métodos de Optimización Diferenciable (PNL):} Aplicación de métodos de descenso por gradiente y Programación Cuadrática Secuencial (SQP). La literatura matemática exige que las funciones estudiadas sean de clase $C^2$ (dos veces diferenciables) para asegurar el cálculo del Hessiano.
+\end{itemize}
+
+Los \textbf{resultados previos} evidencian que incorporar funciones de costo no lineales incrementa drásticamente la dificultad analítica y el tiempo de convergencia de los algoritmos; no obstante, minimiza sustancialmente la brecha de error entre las predicciones del modelo abstracto y las mediciones empíricas de los costos logísticos.

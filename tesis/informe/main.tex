@@ -1,0 +1,107 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+% Configuración de hipervínculos (índice clickable)
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Informe 01 de Proyecto de Tesis},
+    pdfpagemode=FullScreen,
+}
+
+% Formato de los títulos (Secciones en Romanos, subsecciones en arábigos)
+\titleformat{\section}{\large\bfseries}{\Roman{section}.}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\arabic{subsection}.}{1em}{}
+
+\begin{document}
+
+% ==============================================
+% PORTADA
+% ==============================================
+\begin{titlepage}
+    \centering
+    
+    {\Large \textbf{UNIVERSIDAD NACIONAL JORGE BASADRE GROHMANN}} \\[0.5cm]
+    {\large FACULTAD DE CIENCIAS} \\[0.5cm] 
+    {\large ESCUELA PROFESIONAL DE MATEMÁTICA} \\[2.5cm]
+    
+    {\Large \textbf{INFORME 01 DE PROYECTO DE TESIS}} \\[2cm]
+    
+    {\Large \textbf{Tema de Tesis:}} \\[0.5cm]
+    {\large \textbf{Formulación y análisis de un modelo de programación no lineal para la optimización de costos en redes logísticas interregionales}} \\[3cm]
+    
+    {\large \textbf{Presentado por:}} \\[0.5cm]
+    {\large Miguel Angel Luna Ttacca} \\[0.5cm]
+    
+    {\large \textbf{Asignatura:}} \\[0.5cm]
+    {\large Seminario de Tesis I} \\[0.5cm]
+    
+    {\large \textbf{Docente:}} \\[0.5cm]
+    {\large Dr. Rolando Wilman Vásquez Jaico} \\[1cm]
+    
+    {\large Tacna - Perú} \\[0.5cm]
+    {\large 2026}
+    
+\end{titlepage}
+
+% ==============================================
+% ÍNDICE GENERAL
+% ==============================================
+\tableofcontents
+\newpage
+
+% ==============================================
+% DESARROLLO DEL INFORME
+% ==============================================
+
+\input{capitulos/01_preparacion}
+\input{capitulos/02_antecedentes}
+\input{capitulos/03_objetivos}
+\input{capitulos/04_justificacion}
+\input{capitulos/05_alcance}
+\input{capitulos/06_metodologia}
+\input{capitulos/07_relevancia}
+\input{capitulos/08_conclusiones}
+
+\newpage
+\addcontentsline{toc}{section}{Referencias Bibliográficas}
+\begin{thebibliography}{99}
+
+\bibitem{ahuja1993} 
+Ahuja, R. K., Magnanti, T. L., \& Orlin, J. B. (1993). \textit{Network Flows: Theory, Algorithms, and Applications}. Prentice Hall.
+
+\bibitem{bazaraa2006} 
+Bazaraa, M. S., Sherali, H. D., \& Shetty, C. M. (2006). \textit{Nonlinear Programming: Theory and Algorithms} (3ra ed.). John Wiley \& Sons.
+
+\bibitem{boyd2004} 
+Boyd, S., \& Vandenberghe, L. (2004). \textit{Convex Optimization}. Cambridge University Press.
+
+\bibitem{inversa} 
+\textit{Diseño de redes de logística inversa: una revisión del estado del arte y aplicación práctica}. (s.f.). Recuperado de \url{https://scispace.com/pdf/diseno-de-redes-de-logistica-inversa-una-revision-del-estado-1xhlml728v.pdf}
+
+\bibitem{transporte} 
+\textit{Influencia de modelos matemáticos para la optimización de los procesos de transporte de carga terrestre}. (s.f.). Revista CYT. Recuperado de \url{https://revistas.unac.edu.pe/index.php/CYT/article/view/106}
+
+\bibitem{colombia} 
+\textit{Modelo de optimización de la red de transporte primario en el sector de alimentos en Colombia}. (s.f.). Redalyc. Recuperado de \url{https://www.redalyc.org/journal/2856/285667184007/html/}
+
+\bibitem{inventarios} 
+\textit{Modelo matemático de integración de producción e inventarios en una red logística plantas, distribuidores y detallistas}. (s.f.). Dialnet. Recuperado de \url{https://dialnet.unirioja.es/descarga/articulo/8704880.pdf}
+
+\bibitem{nocedal2006} 
+Nocedal, J., \& Wright, S. J. (2006). \textit{Numerical Optimization} (2da ed.). Springer.
+
+\bibitem{ravindran2012} 
+Ravindran, A. R., \& Warsing, D. P. (2012). \textit{Supply Chain Engineering: Models and Applications}. CRC Press.
+
+\end{thebibliography}
+
+\end{document}
